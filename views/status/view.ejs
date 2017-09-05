@@ -1,0 +1,18 @@
+<form action="/status/update" method="POST">
+    <div class="form-group">
+        <label>Заголовок:</label>
+        <input type="text" class="form-control" name="title" value="<%= status.title %>">
+        <br>
+    </div>
+    <div class="form-group">
+        <label>Системное название:</label>
+        <input type="text" class="form-control" name="name" value="<%= status.name %>">
+        <br>
+    </div>   
+    <div class="form-group">
+        <label>Описание</label>
+        <textarea class="form-control" name="description" rows="3"><%= status.description %></textarea>
+    </div>
+    <input type="hidden" name="id" value="<%= status.id %>">
+    <button type="submit" class="btn btn-default">Сохранить</button>
+</form>

@@ -1,0 +1,50 @@
+                <div class="row">
+					  <div class="col-lg-6">
+
+                        <p><a href="/article/create" class="btn btn-info">Add article</a></p>
+                        <p>
+                            <% if (req.user) { %>
+
+                                <a href="/article/me" class="btn btn-info">My articles</a>
+                                <a href="/article" class="btn btn-info">All articles</a>
+                            <% } %>
+                        </p>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Author</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   <% _.each(articles, function (article) { %>
+                                    <tr>
+                                        <td><%= article.id %></td>
+                                        <td><a href="/article/view/<%= article.id %>"><%= article.title %></a></td>
+                                        <td><%= article.description %></td>
+                                        <td><%= article.author %></td>
+                                        <td>
+
+                                            <% if (req.user) { %>
+                                                <% if (req.user.id == article.owner) { %>
+
+                                                <a class="btn btn-success" href="/article/view/<%= article.id %>">Edit</a>
+                                                <a class="btn btn-danger" href="/article/delete/<%= article.id %>">Delete</a>
+
+                                                <% } %>
+
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                    <%}) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+				</div>
+				<!-- /.row -->

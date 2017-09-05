@@ -1,0 +1,40 @@
+<% if (req.user && (req.user.id == article.owner)) { %>
+
+<p class="bg-success"><b>Author:</b> YOU</p>
+
+  <form action="/article/update" method="POST">
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" class="form-control" name="title" value="<%= article.title %>">
+      <br>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" name="description" rows="3"><%= article.description %></textarea>
+    </div>
+    
+    <br>
+    <input type="hidden" name="id" value="<%= article.id %>">
+    <p class="wrap-btn">
+      <button type="submit" class="btn btn-default">Save</button>
+      
+    </p>
+  </form>
+
+<% } else { %>
+
+<p class="bg-success"><b>Author:</b> <%= article.author %></p>
+
+<div class="form-group">
+  <p>Title:</p>
+  <p class="form-control">
+    <%= article.title %>
+  </p>
+  <br>
+</div>
+<div class="form-group">
+  <p>Description</p>
+  <p class="form-control" ><%= article.description %></p>
+</div>
+
+<% } %>
