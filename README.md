@@ -1,3 +1,5 @@
 # sails app
 
-a [Sails](http://sailsjs.org) application
+Run app:
+- npm install
+- sails lift
